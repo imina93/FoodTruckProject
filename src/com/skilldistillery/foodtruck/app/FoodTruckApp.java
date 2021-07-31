@@ -4,13 +4,12 @@ public class FoodTruckApp {
 
 	public static void main(String[] args) {
 	// create an empty array to hold 5 cars 
-		int foodTruckFleet[] = new int[5]; 
+		FoodTruck foodTruckFleet[] = new FoodTruck[5]; 
 	// create scanner for user input
 Scanner kb = new Scanner(System.in);		
 	// for each input, a FoodTruck is generated
-		
+		DisplayOpenMenu();
 	// if user wants less than 5 options, add a quit feature to continue on
-FoodTruck truck1 = new FoodTruck();	
 	// create a menu 
 		DisplayMenu();
 		
@@ -49,6 +48,13 @@ FoodTruck truck1 = new FoodTruck();
 		 * a menu item, the user sees the menu again and can choose another item until
 		 * the choose to quit.
 		 */
+	}
+
+	private static void DisplayOpenMenu() {
+		System.out.println("Welcome To The Foodie Fleet Rating App!!");
+		System.out.println("Enter the name, type, and rating of up to 5 food trucks:");
+		System.out.println("If you would like to skip, enter 'QUIT'");
+		
 	}
 
 	private static void DisplayMenu() {
