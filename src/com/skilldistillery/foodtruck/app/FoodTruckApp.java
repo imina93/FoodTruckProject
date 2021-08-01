@@ -5,10 +5,13 @@ public class FoodTruckApp {
 	public static void main(String[] args) {
 	// create an empty array to hold 5 cars 
 		FoodTruck foodTruckFleet[] = new FoodTruck[5]; 
-	// create scanner for user input
-Scanner kb = new Scanner(System.in);		
+		String input;
+		// create scanner for user input
+		Scanner kb = new Scanner(System.in);		
 	// for each input, a FoodTruck is generated
+
 		DisplayOpenMenu();
+	
 	// if user wants less than 5 options, add a quit feature to continue on
 	// create a menu 
 		DisplayMenu();
