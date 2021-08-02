@@ -47,6 +47,11 @@ public class FoodTruck {
 	}
 	public void setNumRating(int numRating) {
 		this.numRating = numRating;
+	
+	}
+	@Override
+	public String toString() {
+		return "FoodTruck [id=" + id + ", name=" + name + ", foodType=" + foodType + ", numRating=" + numRating + "]";
 	}
 
 	

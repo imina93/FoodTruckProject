@@ -1,75 +1,82 @@
 package com.skilldistillery.foodtruck.app;
+
 import java.util.*;
+
 public class FoodTruckApp {
 
 	public static void main(String[] args) {
-	// create an empty array to hold 5 cars 
-		FoodTruck foodTruckFleet[] = new FoodTruck[5]; 
-		String input;
-		// create scanner for user input
-		Scanner kb = new Scanner(System.in);		
-	// for each input, a FoodTruck is generated
-
-		DisplayOpenMenu();
-	
-	// if user wants less than 5 options, add a quit feature to continue on
-	// create a menu 
-		DisplayMenu();
-		
-		// list all existing food trucks
-		// list the average rating of the food trucks
-		// list all info on the highest rated food truck
-		// quit option
-		
-	// loop the menu to reset after every option until quit
+		// Generate an array to hold up to 5 trucks
+		FoodTruck foodTruckFleet[] = new FoodTruck[5];
 		
 
-		/*
-		 * You will create a separate class with a main method that starts the program.
-		 * It will have an array to store up to five FoodTruck objects. The main method
-		 * of this class is the only static method in the entire project.
-		 * 
-		 */
-
-		/*
-		 * User Story #1 The user is prompted to input the name, food type, and rating
-		 * for up to five food trucks. For each set of input, a FoodTruck object is
-		 * created, its fields set to the user's input, and it is added to the array.
-		 * The truck id is not input by the user, but instead assigned automatically in
-		 * the FoodTruck constructor from a static field that is incremented as each
-		 * truck is created.
-		 * 
-		 * User Story #2 If the user inputs quit for the food truck name, input ends
-		 * immediately and the program continues.
-		 * 
-		 * User Story #3 After input is complete, the user sees a menu from which they
-		 * can choose to:
-		 * List all existing food trucks. See the average rating of food trucks. Display
-		 * the highest-rated food truck. Quit the program. 
-		 * 
-		 * User Story #4 After choosing
-		 * a menu item, the user sees the menu again and can choose another item until
-		 * the choose to quit.
-		 */
-	}
-
-	private static void DisplayOpenMenu() {
+		// Welcome Menu
 		System.out.println("Welcome To The Foodie Fleet Rating App!!");
 		System.out.println("Enter the name, type, and rating of up to 5 food trucks:");
-		System.out.println("If you would like to skip, enter 'QUIT'");
+		System.out.println("If you would like to skip, enter 'QUIT' when prompted for a name.");
+		
+		for (int i=0;i<5;i++) {
+			Scanner kb = new Scanner(System.in);
+			String input = kb.next();			
+				foodTruckFleet[i] = new FoodTruck(input, input, i);
+				System.out.println("Enter Truck Name: ");
+				foodTruckFleet[i].setName(kb.next());
+				System.out.println("");
+				System.out.println("Enter Type of Food: ");
+				foodTruckFleet[i].setFoodType(kb.next());
+				System.out.println("");
+				System.out.println("Enter Truck Rating: ");
+				foodTruckFleet[i].setNumRating(kb.nextInt());
+				if (input == "Quit") {
+					break;	
+				}
+				kb.close();
+		} 
+		DisplayMenu();
+		boolean isMenu = true;
+		int menuSelection = 0;
+		while (isMenu) {
+			switch (menuSelection) {
+			case 1:
+				foodTruckFleet.toString();
+				break;
+			case 2: 
+				int sum = 0;
+				for (int i = 0; i < foodTruckFleet.length; i++) {
+					sum = sum + foodTruckFleet[i].getNumRating();
+					double average = sum / foodTruckFleet.length;
+					System.out.println("The average rating is: " + average);
+				}
+			case 3: 
+				int max = foodTruckFleet[0].getNumRating();
+				for (int i = 0; i < foodTruckFleet.length; i++) {
+					if (foodTruckFleet[i].getNumRating() > max) {
+						max = foodTruckFleet[i].getNumRating();
+					System.out.println(max);
+					}
+				}
+			case 4:
+				isMenu = false;
+				break;
+			}
+				System.out.println("Thanks for using the Foodie Fleet App!");
+		} 
+	
+		
+			
 		
 	}
 
+
 	private static void DisplayMenu() {
-System.out.println("---------------------");	
-System.out.println("---------------------");	
-System.out.println("1.See All Food Trucks");	
-System.out.println("2.See Average Rating");	
-System.out.println("3.See Highest Rated--");	
-System.out.println("4.Quit");	
-System.out.println("---------------------");	
-System.out.println("---------------------");	
+		System.out.println("---------------------");
+		System.out.println("---------------------");
+		System.out.println("Choose an option number");
+		System.out.println("1.See All Food Trucks");
+		System.out.println("2.See Average Rating");
+		System.out.println("3.See Highest Rated");
+		System.out.println("4.Quit");
+		System.out.println("---------------------");
+		System.out.println("---------------------");
 	}
-	
 
 }
